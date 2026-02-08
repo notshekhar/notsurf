@@ -16,7 +16,8 @@
 <body>
   <header class="header">
     <div class="header-content">
-      <h1 class="logo">notSurf</h1>
+      <img src="https://vectr.com/shekharrdj/fyBpiCIxy.png?width=640&height=640&select=fyBpiCIxypage0" alt="notSurf Logo" class="header-img">
+      <h1 class="logo sr-only">notSurf</h1>
       <div class="search-container hide">
         <input class="inputsearch" type="text" name="search" placeholder="Search by your blood group or city">
         <div class="hidesearch"></div>
@@ -29,22 +30,31 @@
     <section class="conthome active">
       <div class="demo-container">
         <h2>CSS Sprite Image Demonstration</h2>
-        <p>This project demonstrates the power of CSS sprites for optimizing web performance.</p>
+        <p>This project demonstrates the power of CSS sprites for optimizing web performance by combining multiple images into a single file.</p>
         
+        <div class="main-demo-area">
+          <h3>Welcome to notSurf</h3>
+          <p>This application showcases interactive navigation elements that use a single sprite sheet for all icons and their various states (normal, hover, and active).</p>
+          <div class="content-placeholder">
+            <p>You can navigate through the different sections using the bottom navigation bar. Each icon you see is a demonstration of precise background positioning on a sprite sheet.</p>
+            <p>The sprite technique helps in reducing the number of HTTP requests, which was a critical optimization for web performance in the era this project was originally built.</p>
+          </div>
+        </div>
+
         <div class="sprite-showcase">
           <h3>Navigation Icons Using Sprites</h3>
           <div class="icon-grid">
             <div class="icon-item">
               <div class="icon-preview home-large"></div>
-              <span>Home</span>
+              <span>Home (50x50)</span>
             </div>
             <div class="icon-item">
               <div class="icon-preview search-large"></div>
-              <span>Search</span>
+              <span>Search (70x50)</span>
             </div>
             <div class="icon-item">
               <div class="icon-preview menu-large"></div>
-              <span>Menu</span>
+              <span>Menu (50x50)</span>
             </div>
           </div>
         </div>
@@ -52,10 +62,10 @@
         <div class="sprite-info">
           <h3>Benefits of CSS Sprites</h3>
           <ul>
-            <li>Reduced HTTP requests</li>
-            <li>Faster page load times</li>
-            <li>Better caching efficiency</li>
-            <li>Reduced bandwidth usage</li>
+            <li><strong>Reduced HTTP Requests:</strong> One request for many images.</li>
+            <li><strong>Faster Page Load:</strong> Minimal overhead for metadata.</li>
+            <li><strong>Instant State Changes:</strong> No flickering when hovering.</li>
+            <li><strong>Efficiency:</strong> Better compression for a single large image.</li>
           </ul>
         </div>
 
@@ -72,24 +82,39 @@
     <!-- Search Section -->
     <section class="contsearch">
       <div class="demo-container">
-        <h2>Sprite Search Examples</h2>
-        <p>Explore how sprites can be used for interactive search functionality.</p>
+        <h2>Interactive Sprite States</h2>
+        <p>This section demonstrates how clicking an icon changes its state using different coordinates from the same sprite sheet.</p>
         
-        <div class="search-demos">
-          <div class="search-icon-states">
-            <h3>Search Icon States</h3>
-            <div class="state-demo">
-              <div class="state-item">
-                <div class="icon-preview search-normal"></div>
-                <span>Normal</span>
+        <div class="state-demo-showcase">
+          <h3>Try Clicking the Navigation Bar</h3>
+          <p>When you click an icon below, it uses the original "active" coordinates from 2017 to show the highlighted version.</p>
+          
+          <div class="sprite-grid">
+            <div class="sprite-item">
+              <h4>Home Icon States</h4>
+              <div class="flex-row">
+                <div class="icon-box">
+                  <div class="home"></div>
+                  <span>Normal</span>
+                </div>
+                <div class="icon-box">
+                  <div class="home-active-demo"></div>
+                  <span>Active</span>
+                </div>
               </div>
-              <div class="state-item">
-                <div class="icon-preview search-hover"></div>
-                <span>Hover</span>
-              </div>
-              <div class="state-item">
-                <div class="icon-preview search-active"></div>
-                <span>Active</span>
+            </div>
+
+            <div class="sprite-item">
+              <h4>Search Icon States</h4>
+              <div class="flex-row">
+                <div class="icon-box">
+                  <div class="search"></div>
+                  <span>Normal</span>
+                </div>
+                <div class="icon-box">
+                  <div class="search-active-demo"></div>
+                  <span>Active</span>
+                </div>
               </div>
             </div>
           </div>

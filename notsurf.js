@@ -39,7 +39,9 @@ function initializeNavigation() {
         btn.classList.remove('active');
         btn.removeAttribute('aria-current');
       });
-      Object.values(sections).forEach(section => section.classList.remove('active'));
+      Object.values(sections).forEach(section => {
+        if (section) section.classList.remove('active');
+      });
       
       // Add active class and aria-current to clicked button and corresponding section
       this.classList.add('active');
@@ -53,13 +55,7 @@ function initializeNavigation() {
         setTimeout(() => {
           sections[targetSection].style.animation = 'fadeIn 0.3s ease-in-out';
         }, 10);
-        
-        // Announce to screen readers
-        announceToScreenReader(`Navigated to ${targetSection} section`);
       }
-      
-      // Log navigation for demonstration
-      console.log(`Navigated to ${targetSection} section`);
     });
   });
 }

@@ -23,6 +23,11 @@
   padding: 0 16px;
 }
 
+.header-img {
+  height: 40px;
+  width: auto;
+}
+
 .logo {
   font-family: 'Yantramanav', sans-serif;
   font-size: 24px;
@@ -37,14 +42,11 @@
   left: 0;
   box-shadow: 0 -2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
   width: 100%;
-  height: 56px;
+  height: 60px; /* Slightly taller to accommodate 50px icons */
   background: white;
-  z-index: 999; /* Lower than header to prevent conflicts */
+  z-index: 999;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  /* Safe area insets for modern devices */
   padding-bottom: env(safe-area-inset-bottom, 0);
-  padding-left: env(safe-area-inset-left, 0);
-  padding-right: env(safe-area-inset-right, 0);
 }
 
 .nav-icons {
@@ -52,43 +54,29 @@
   justify-content: space-around;
   align-items: center;
   height: 100%;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .nav-btn {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 12px;
-  border-radius: 50%;
-  transition: background-color 0.2s ease;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* WCAG 2.1 compliant touch targets (minimum 44x44px) */
-  min-width: 44px;
-  min-height: 44px;
-  position: relative;
+  transition: background-color 0.2s ease;
+  min-width: 60px;
+  min-height: 60px;
 }
 
 .nav-btn:hover {
-  background-color: rgba(0,0,0,0.04);
-}
-
-.nav-btn:focus-visible {
-  outline: 2px solid #1976d2;
-  outline-offset: 2px;
-  background-color: rgba(25, 118, 210, 0.08);
+  background-color: rgba(0,0,0,0.02);
 }
 
 .nav-btn.active {
-  background-color: rgba(33, 150, 243, 0.12);
-}
-
-.nav-btn.active:focus-visible {
-  background-color: rgba(33, 150, 243, 0.2);
+  background-color: rgba(33, 150, 243, 0.05);
 }
 
 /* Sprite Navigation Icons */
@@ -96,52 +84,49 @@
   background-image: url(statics/icons.png);
   background-repeat: no-repeat;
   display: inline-block;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease;
 }
 
-/* Base icon size */
-.home, .search, .menu {
-  width: 24px;
-  height: 24px;
-}
-
-/* Normal states - using different positions from the sprite */
+/* Original icon sizes and positions */
 .home {
+  width: 50px;
+  height: 50px;
   background-position: -10px -160px;
 }
 
 .search {
+  width: 70px;
+  height: 50px;
   background-position: -90px -160px;
 }
 
 .menu {
-  background-position: -170px -160px;
+  width: 50px;
+  height: 50px;
+  background-position: -10px -160px;
 }
 
-/* Hover states */
-.home:hover {
-  background-position: -10px -200px;
+/* Active states - Restoring original coordinates for click/active states */
+.nav-btn.home-btn.active .home, 
+.home:active {
+  background-position: -271px -247px !important;
 }
 
-.search:hover {
-  background-position: -90px -200px;
+.nav-btn.search-btn.active .search, 
+.search:active {
+  background-position: -177px -247px !important;
 }
 
-.menu:hover {
-  background-position: -170px -200px;
+.nav-btn.menu-btn.active .menu,
+.menu:active {
+  background-position: -271px -247px !important;
 }
 
-/* Active states */
-.home:active, .nav-btn.home-btn.active .home {
-  background-position: -10px -240px;
-}
-
-.search:active, .nav-btn.search-btn.active .search {
-  background-position: -90px -240px;
-}
-
-.menu:active, .nav-btn.menu-btn.active .menu {
-  background-position: -170px -240px;
+/* Hover effects for demo */
+.nav-btn:hover .home,
+.nav-btn:hover .search,
+.nav-btn:hover .menu {
+  transform: scale(1.05);
 }
 /* Base Styles */
 body {
@@ -229,13 +214,28 @@ body {
 .home-large, .search-large, .menu-large {
   background-image: url(statics/icons.png);
   background-repeat: no-repeat;
-  width: 48px;
-  height: 48px;
 }
 
-.home-large { background-position: -10px -160px; }
-.search-large { background-position: -90px -160px; }
-.menu-large { background-position: -170px -160px; }
+.home-large { 
+  width: 50px;
+  height: 50px;
+  background-position: -10px -160px; 
+}
+.search-large { 
+  width: 70px;
+  height: 50px;
+  background-position: -90px -160px; 
+}
+.menu-large { 
+  width: 50px;
+  height: 50px;
+  background-position: -10px -160px; 
+}
+
+/* Hover states for demonstration */
+.home-large:hover { background-position: -10px -200px; }
+.search-large:hover { background-position: -90px -200px; }
+.menu-large:hover { background-position: -10px -200px; }
 
 /* Sprite Info */
 .sprite-info ul {
@@ -291,14 +291,53 @@ body {
 .search-normal, .search-hover, .search-active {
   background-image: url(statics/icons.png);
   background-repeat: no-repeat;
-  width: 32px;
-  height: 32px;
+  width: 70px;
+  height: 50px;
   margin: 0 auto 8px;
 }
 
 .search-normal { background-position: -90px -160px; }
 .search-hover { background-position: -90px -200px; }
 .search-active { background-position: -90px -240px; }
+
+.home-active-demo {
+  width: 50px;
+  height: 50px;
+  background-image: url(statics/icons.png);
+  background-position: -271px -247px;
+}
+
+.search-active-demo {
+  width: 70px;
+  height: 50px;
+  background-image: url(statics/icons.png);
+  background-position: -177px -247px;
+}
+
+.sprite-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.flex-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+  min-width: 100px;
+}
 
 /* Menu Demo */
 .menu-demos {
@@ -333,18 +372,18 @@ body {
 .menu-icon {
   background-image: url(statics/icons.png);
   background-repeat: no-repeat;
-  width: 32px;
-  height: 32px;
+  width: 50px;
+  height: 50px;
   margin-bottom: 8px;
 }
 
 .menu-home { background-position: -10px -160px; }
 .menu-search { background-position: -90px -160px; }
-.menu-settings { background-position: -170px -160px; }
+.menu-settings { background-position: -10px -160px; }
 
 .menu-item:hover .menu-home { background-position: -10px -200px; }
 .menu-item:hover .menu-search { background-position: -90px -200px; }
-.menu-item:hover .menu-settings { background-position: -170px -200px; }
+.menu-item:hover .menu-settings { background-position: -10px -200px; }
 /* Search Container */
 .search-container {
   position: relative;
