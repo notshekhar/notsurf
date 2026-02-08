@@ -24,7 +24,7 @@
     </div>
   </header>
 
-  <main class="content">
+  <main class="content" id="main-content">
     <!-- Home Section -->
     <section class="conthome active">
       <div class="demo-container">
@@ -124,9 +124,12 @@
     </section>
   </main>
 
+  <!-- Skip to content link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <footer class="footer">
-    <nav class="nav-icons">
-      <button class="nav-btn home-btn active" data-section="home" aria-label="Home">
+    <nav class="nav-icons" role="navigation" aria-label="Main navigation">
+      <button class="nav-btn home-btn active" data-section="home" aria-label="Home" aria-current="page">
         <i class="home"></i>
       </button>
       <button class="nav-btn search-btn" data-section="search" aria-label="Search">

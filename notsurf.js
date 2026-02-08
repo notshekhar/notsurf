@@ -34,12 +34,16 @@ function initializeNavigation() {
     button.addEventListener('click', function() {
       const targetSection = this.getAttribute('data-section');
       
-      // Remove active class from all buttons and sections
-      navButtons.forEach(btn => btn.classList.remove('active'));
+      // Remove active class and aria-current from all buttons and sections
+      navButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.removeAttribute('aria-current');
+      });
       Object.values(sections).forEach(section => section.classList.remove('active'));
       
-      // Add active class to clicked button and corresponding section
+      // Add active class and aria-current to clicked button and corresponding section
       this.classList.add('active');
+      this.setAttribute('aria-current', 'page');
       
       if (sections[targetSection]) {
         sections[targetSection].classList.add('active');
@@ -49,12 +53,29 @@ function initializeNavigation() {
         setTimeout(() => {
           sections[targetSection].style.animation = 'fadeIn 0.3s ease-in-out';
         }, 10);
+        
+        // Announce to screen readers
+        announceToScreenReader(`Navigated to ${targetSection} section`);
       }
       
       // Log navigation for demonstration
       console.log(`Navigated to ${targetSection} section`);
     });
   });
+}
+
+// Announce content changes to screen readers
+function announceToScreenReader(message) {
+  const announcement = document.createElement('div');
+  announcement.setAttribute('role', 'status');
+  announcement.setAttribute('aria-live', 'polite');
+  announcement.className = 'sr-only';
+  announcement.textContent = message;
+  document.body.appendChild(announcement);
+  
+  setTimeout(() => {
+    document.body.removeChild(announcement);
+  }, 1000);
 }
 
 function initializeSpriteDemos() {
@@ -119,26 +140,63 @@ function initializeInteractions() {
   });
 }
 
-// Header scroll effect (keeping original functionality)
+// Throttle function for performance
+function throttle(func, limit) {
+  let inThrottle;
+  return function(...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }
+}
+
+// Header and footer scroll effect with consistent behavior
 let lastScrollTop = 0;
 const header = document.querySelector('.header');
+const footer = document.querySelector('.footer');
 const offSet = 56;
 
-window.addEventListener('scroll', function() {
+// Check for reduced motion preference
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const handleScroll = function() {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   
-  if (header) {
+  // Update content padding dynamically
+  updateContentPadding();
+  
+  if (header && footer) {
     if (scrollTop > lastScrollTop && scrollTop > offSet) {
-      // Scrolling down
-      header.style.transform = 'translateY(-100%)';
+      // Scrolling down - hide both for consistent experience
+      header.style.transform = prefersReducedMotion ? 'translateY(-100%)' : 'translateY(-100%)';
+      footer.style.transform = prefersReducedMotion ? 'translateY(100%)' : 'translateY(100%)';
     } else {
-      // Scrolling up or at top
+      // Scrolling up or at top - show both
       header.style.transform = 'translateY(0)';
+      footer.style.transform = 'translateY(0)';
     }
   }
   
-  lastScrollTop = scrollTop;
-});
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+};
+
+// Throttled scroll event listener
+window.addEventListener('scroll', throttle(handleScroll, 100));
+
+// Update content padding based on current element heights
+function updateContentPadding() {
+  const content = document.querySelector('.content');
+  if (!content) return;
+  
+  const headerHeight = header ? header.offsetHeight : 56;
+  const footerHeight = footer ? footer.offsetHeight : 56;
+  
+  content.style.paddingTop = `${headerHeight}px`;
+  content.style.paddingBottom = `${footerHeight}px`;
+  content.style.minHeight = `calc(100vh - ${headerHeight + footerHeight}px)`;
+}
 
 // Add pulse animation dynamically
 const style = document.createElement('style');
