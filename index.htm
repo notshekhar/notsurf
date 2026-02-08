@@ -1,90 +1,143 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>notSurf</title>
-  <link rel="stylesheet" href="/statics/mdl.css">
-  <script type="text/javascript" src="statics/mdl.js">
-  <link rel="stylesheet" href="/statics/icon.css">
-  </script>
-<link rel="shortcut icon" href="statics/notsurf.png" type="image/x-icon">
-<link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet">
-<link rel="stylesheet" href="notsurf.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0,
-                                 maximum-scale=1.0, user-scalable=no">
-<link rel="manifest" href="/manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>notSurf - CSS Sprite Demo</title>
+  
+  <link rel="shortcut icon" href="statics/notsurf.png" type="image/x-icon">
+  <link rel="manifest" href="manifest.json">
+  
+  <link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet">
+  <link rel="stylesheet" href="statics/mdl.css">
+  <link rel="stylesheet" href="statics/icon.css">
+  <link rel="stylesheet" href="notsurf.css">
 </head>
 <body>
-  <div class="header">
-   <img src="https://vectr.com/shekharrdj/fyBpiCIxy.png?width=640&height=640&select=fyBpiCIxypage0">
-   <div class="hide">
-   <input class="inputsearch" type="text" name="search" value="search by your blood group or city">
-   <div class="hidesearch"></div>
-   </div>
-  </div>
-  <!--home-->
-  <div class="conthome">
-      <!-- home contet goes here -->
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
-     jgfhgfkgfgfj<br>
+  <header class="header">
+    <div class="header-content">
+      <h1 class="logo">notSurf</h1>
+      <div class="search-container hide">
+        <input class="inputsearch" type="text" name="search" placeholder="Search by your blood group or city">
+        <div class="hidesearch"></div>
+      </div>
+    </div>
+  </header>
 
-  </div>
-  <!-- search -->
-  <div class="contsearch">
-      <!-- searches goes here -->
-  </div>
-  <!-- menu -->
-  <div class="contmenu">
-      <!-- searches goes here -->
-  </div>
-  <div class="footer">
-    <i class="home"></i>
-    <i class="search"></i>
-    <i class="menu"></i>
-  </div>
+  <main class="content">
+    <!-- Home Section -->
+    <section class="conthome active">
+      <div class="demo-container">
+        <h2>CSS Sprite Image Demonstration</h2>
+        <p>This project demonstrates the power of CSS sprites for optimizing web performance.</p>
+        
+        <div class="sprite-showcase">
+          <h3>Navigation Icons Using Sprites</h3>
+          <div class="icon-grid">
+            <div class="icon-item">
+              <div class="icon-preview home-large"></div>
+              <span>Home</span>
+            </div>
+            <div class="icon-item">
+              <div class="icon-preview search-large"></div>
+              <span>Search</span>
+            </div>
+            <div class="icon-item">
+              <div class="icon-preview menu-large"></div>
+              <span>Menu</span>
+            </div>
+          </div>
+        </div>
 
+        <div class="sprite-info">
+          <h3>Benefits of CSS Sprites</h3>
+          <ul>
+            <li>Reduced HTTP requests</li>
+            <li>Faster page load times</li>
+            <li>Better caching efficiency</li>
+            <li>Reduced bandwidth usage</li>
+          </ul>
+        </div>
 
+        <div class="sprite-visual">
+          <h3>Sprite Sheet Preview</h3>
+          <div class="sprite-container">
+            <img src="statics/icons.png" alt="CSS Sprite Sheet" class="sprite-sheet">
+            <div class="sprite-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- hello script -->
+    <!-- Search Section -->
+    <section class="contsearch">
+      <div class="demo-container">
+        <h2>Sprite Search Examples</h2>
+        <p>Explore how sprites can be used for interactive search functionality.</p>
+        
+        <div class="search-demos">
+          <div class="search-icon-states">
+            <h3>Search Icon States</h3>
+            <div class="state-demo">
+              <div class="state-item">
+                <div class="icon-preview search-normal"></div>
+                <span>Normal</span>
+              </div>
+              <div class="state-item">
+                <div class="icon-preview search-hover"></div>
+                <span>Hover</span>
+              </div>
+              <div class="state-item">
+                <div class="icon-preview search-active"></div>
+                <span>Active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="contmenu">
+      <div class="demo-container">
+        <h2>Sprite Menu Examples</h2>
+        <p>Advanced sprite techniques for menu components.</p>
+        
+        <div class="menu-demos">
+          <h3>Interactive Menu Icons</h3>
+          <div class="menu-grid">
+            <div class="menu-item">
+              <div class="menu-icon menu-home"></div>
+              <span>Dashboard</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-icon menu-search"></div>
+              <span>Find</span>
+            </div>
+            <div class="menu-item">
+              <div class="menu-icon menu-settings"></div>
+              <span>Settings</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <nav class="nav-icons">
+      <button class="nav-btn home-btn active" data-section="home" aria-label="Home">
+        <i class="home"></i>
+      </button>
+      <button class="nav-btn search-btn" data-section="search" aria-label="Search">
+        <i class="search"></i>
+      </button>
+      <button class="nav-btn menu-btn" data-section="menu" aria-label="Menu">
+        <i class="menu"></i>
+      </button>
+    </nav>
+  </footer>
+
   <script src="notsurf.js"></script>
 </body>
 </html>
